@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class character : MonoBehaviour{
 
-   public float speed = 6.0f;
-   public float rotateSpeed = 6.0f;
+    public float speed = 6.0f;
+    public float rotateSpeed = 6.0f;
 
-   private Vector3 moveDirection = Vector3.zero;
-   private CharacterController controller;
+    public Animator animator;
+
+    private Vector3 moveDirection = Vector3.zero;
+    private CharacterController controller;
 
     // Start is called before the first frame update
     void Start()
@@ -32,5 +34,18 @@ public class character : MonoBehaviour{
         //moveDirection.y -= gravity * Time.deltaTime;
 
         controller.Move(moveDirection * Time.deltaTime);
+
+        if ( Input.GetAxis("Vertical") > 0 )
+        {
+            animator.SetBool("Walk",true);
+        }
+        else if ( Input.GetAxis("Vertical") > 0 )
+        {
+            // Placeholder for walking backwards
+        }
+        else
+        {
+            animator.SetBool("Walk", false);
+        }
     }
 }
