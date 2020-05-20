@@ -36,7 +36,7 @@ public class FootIKControl : MonoBehaviour
             Vector3 footPosition = hitLeft.point;
             footPosition.y += distanceToGround;
             animator.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
-            animator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(transform.forward, hitLeft.normal));
+            //animator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(transform.forward, hitLeft.normal));
         }
 
         animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1f);
@@ -50,7 +50,7 @@ public class FootIKControl : MonoBehaviour
             Vector3 footPosition = hitRight.point;
             footPosition.y += distanceToGround;
             animator.SetIKPosition(AvatarIKGoal.RightFoot, footPosition);
-            animator.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.LookRotation(transform.forward, hitRight.normal));
+            //animator.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.LookRotation(transform.forward, hitRight.normal));
         }
     }
     
