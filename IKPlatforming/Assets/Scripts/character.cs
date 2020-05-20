@@ -59,4 +59,12 @@ public class character : MonoBehaviour{
         }
 
     }
+
+    //code from AMartin223: https://answers.unity.com/questions/17566/how-can-i-make-my-player-a-charactercontroller-pus.html
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+        if (body != null && !body.isKinematic)
+            body.velocity += hit.controller.velocity;
+    }
 }
