@@ -9,7 +9,7 @@ public class character : MonoBehaviour{
 
     public Animator animator;
 
-    private Vector3 moveDirection = Vector3.zero;
+    public Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
 
     // Start is called before the first frame update
