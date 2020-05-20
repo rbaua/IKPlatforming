@@ -23,6 +23,10 @@ public class character : MonoBehaviour{
     // Update is called once per frame
     void Update()
     {
+
+      print(controller.isGrounded);
+
+      if(controller.isGrounded){
         //Forward-Backwards movment using F/B Arrow Keys
         moveDirection = new Vector3(0.0f, 0.0f, Input.GetAxis("Vertical"));
 
@@ -32,11 +36,15 @@ public class character : MonoBehaviour{
         //Rotation using R/L Arrow Keys
         transform.Rotate(0, Input.GetAxis("Horizontal"), 0);
 
+     }
+
         if (Input.GetButton("Jump")){
            moveDirection.y = jumpSpeed;
         } else {
-           moveDirection.y = -4.0f;
+           moveDirection.y += (-gravity * Time.deltaTime);
         }
+
+        //print(moveDirection.y);
 
         //Gravity
         //moveDirection.y -= (gravity * Time.deltaTime);
