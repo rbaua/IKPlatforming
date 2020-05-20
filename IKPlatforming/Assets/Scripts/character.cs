@@ -6,10 +6,12 @@ public class character : MonoBehaviour{
 
     public float speed = 6.0f;
     public float rotateSpeed = 6.0f;
+    public float jumpSpeed = 8.0f;
+    public float gravity = 20.0f;
 
     public Animator animator;
 
-    public Vector3 moveDirection = Vector3.zero;
+    private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
 
     // Start is called before the first frame update
@@ -22,7 +24,7 @@ public class character : MonoBehaviour{
     void Update()
     {
         //Forward-Backwards movment using F/B Arrow Keys
-        moveDirection = new Vector3(0, 0, Input.GetAxis("Vertical"));
+        moveDirection = new Vector3(0.0f, 0.0f, Input.GetAxis("Vertical"));
 
         moveDirection = transform.TransformDirection(moveDirection);
         moveDirection *= speed;
@@ -30,10 +32,18 @@ public class character : MonoBehaviour{
         //Rotation using R/L Arrow Keys
         transform.Rotate(0, Input.GetAxis("Horizontal"), 0);
 
-        //Gravity Not Implemented
-        //moveDirection.y -= gravity * Time.deltaTime;
+        if (Input.GetButton("Jump")){
+           moveDirection.y = jumpSpeed;
+        } else {
+           moveDirection.y = -4.0f;
+        }
+
+        //Gravity
+        //moveDirection.y -= (gravity * Time.deltaTime);
+        //moveDirection.y = -4.0f;
 
         controller.Move(moveDirection * Time.deltaTime);
+
 
         if ( Input.GetAxis("Vertical") > 0 )
         {
@@ -47,5 +57,14 @@ public class character : MonoBehaviour{
         {
             animator.SetBool("Walk", false);
         }
+
+    }
+
+    //code from AMartin223: https://answers.unity.com/questions/17566/how-can-i-make-my-player-a-charactercontroller-pus.html
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+        if (body != null && !body.isKinematic)
+            body.velocity += hit.controller.velocity;
     }
 }

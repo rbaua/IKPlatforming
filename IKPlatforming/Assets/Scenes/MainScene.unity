@@ -230,8 +230,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6be0a965ca191ff44a0faba3ffd17410, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   distanceToGround: 0
   ikActive: 0
 --- !u!1 &705507993
@@ -609,7 +609,7 @@ PrefabInstance:
     - target: {fileID: 2069632546699131105, guid: 580642554f4e19947895f9b3aedc05d4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 4fc29e82704c28f4a85afb2bf330be57, type: 2}
     - target: {fileID: 2130002546065123035, guid: 580642554f4e19947895f9b3aedc05d4,
         type: 3}
