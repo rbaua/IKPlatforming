@@ -22,10 +22,6 @@ public class FootIKControl : MonoBehaviour
         player = LayerMask.GetMask("Player");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     private void OnAnimatorIK(int layerIndex)
     {
@@ -34,12 +30,24 @@ public class FootIKControl : MonoBehaviour
 
         //left
         RaycastHit hit;
-        Ray toGround = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
-        if(Physics.Raycast(toGround, out hit, distanceToGround + 1f, enviroLayer))
+        Ray toGroundLeft = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
+        if(Physics.Raycast(toGroundLeft, out hit, distanceToGround + 1f, enviroLayer))
         {
             Vector3 footPosition = hit.point;
             footPosition.y += distanceToGround;
             animator.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
+        }
+
+        animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1f);
+        animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1f);
+
+        //left
+        Ray toGroundRight = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down);
+        if (Physics.Raycast(toGroundRight, out hit, distanceToGround + 1f, enviroLayer))
+        {
+            Vector3 footPosition = hit.point;
+            footPosition.y += distanceToGround;
+            animator.SetIKPosition(AvatarIKGoal.RightFoot, footPosition);
         }
     }
 }
