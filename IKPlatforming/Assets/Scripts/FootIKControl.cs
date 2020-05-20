@@ -29,11 +29,11 @@ public class FootIKControl : MonoBehaviour
         animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1f);
 
         //left
-        RaycastHit hit;
+        RaycastHit hitLeft;
         Ray toGroundLeft = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
-        if(Physics.Raycast(toGroundLeft, out hit, distanceToGround + 1f, enviroLayer))
+        if(Physics.Raycast(toGroundLeft, out hitLeft, distanceToGround + 1f, enviroLayer))
         {
-            Vector3 footPosition = hit.point;
+            Vector3 footPosition = hitLeft.point;
             footPosition.y += distanceToGround;
             animator.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
         }
@@ -41,11 +41,12 @@ public class FootIKControl : MonoBehaviour
         animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1f);
         animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1f);
 
-        //left
+        //right
+        RaycastHit hitRight;
         Ray toGroundRight = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down);
-        if (Physics.Raycast(toGroundRight, out hit, distanceToGround + 1f, enviroLayer))
+        if (Physics.Raycast(toGroundRight, out hitRight, distanceToGround + 1f, enviroLayer))
         {
-            Vector3 footPosition = hit.point;
+            Vector3 footPosition = hitRight.point;
             footPosition.y += distanceToGround;
             animator.SetIKPosition(AvatarIKGoal.RightFoot, footPosition);
         }
