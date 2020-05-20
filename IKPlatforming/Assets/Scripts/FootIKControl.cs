@@ -31,11 +31,12 @@ public class FootIKControl : MonoBehaviour
         //left
         RaycastHit hitLeft;
         Ray toGroundLeft = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
-        if(Physics.Raycast(toGroundLeft, out hitLeft, distanceToGround + 1f, enviroLayer))
+        if(Physics.Raycast(toGroundLeft, out hitLeft, distanceToGround + 1f))
         {
             Vector3 footPosition = hitLeft.point;
             footPosition.y += distanceToGround;
             animator.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
+            animator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(transform.forward, hitLeft.normal));
         }
 
         animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1f);
@@ -49,6 +50,15 @@ public class FootIKControl : MonoBehaviour
             Vector3 footPosition = hitRight.point;
             footPosition.y += distanceToGround;
             animator.SetIKPosition(AvatarIKGoal.RightFoot, footPosition);
+            animator.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.LookRotation(transform.forward, hitRight.normal));
         }
+    }
+    
+
+    private void OnDrawGizmos()
+    {
+        //Ray gizmoRay = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
+        Gizmos.color = Color.red;
+        //Gizmos.DrawRay(gizmoRay);
     }
 }
