@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6be0a965ca191ff44a0faba3ffd17410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToGround: 0.076
+  distanceToGround: 0.77
   ikActive: 1
 --- !u!4 &1614796514 stripped
 Transform:

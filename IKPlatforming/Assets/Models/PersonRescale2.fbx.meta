@@ -50,139 +50,6 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Walk (1)
-      takeName: Armature|Walk
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 20
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves:
-      - name: IKLeftFootWeight
-        curve:
-          serializedVersion: 2
-          curve:
-          - serializedVersion: 3
-            time: 0.0022850037
-            value: 0.99765015
-            inSlope: -6.6028066
-            outSlope: -6.6028066
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 0.15297249
-            value: 0.0026898384
-            inSlope: -0.06028181
-            outSlope: -0.06028181
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.74244124
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 0.5628359
-            value: 0.010919005
-            inSlope: 0.081377394
-            outSlope: 0.081377394
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.2897352
-          - serializedVersion: 3
-            time: 0.67803943
-            value: 1.0000291
-            inSlope: 0.05231138
-            outSlope: 0.05231138
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 1
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: -0.00009034357
-            outSlope: -0.00009034357
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          preInfinity: 2
-          postInfinity: 2
-          rotationOrder: 4
-      - name: IKRightFootWeight
-        curve:
-          serializedVersion: 2
-          curve:
-          - serializedVersion: 3
-            time: -0.0022850037
-            value: 0.0047302246
-            inSlope: 13.218877
-            outSlope: 13.218877
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 0.07266721
-            value: 0.99551433
-            inSlope: 0.015732275
-            outSlope: 0.015732275
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 1
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 0.62930566
-            value: 0.9865507
-            inSlope: -0.037823305
-            outSlope: -0.037823305
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 1
-          - serializedVersion: 3
-            time: 0.71168244
-            value: 0.002423942
-            inSlope: 0.005013812
-            outSlope: 0.005013812
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.33333334
-          - serializedVersion: 3
-            time: 0.99542236
-            value: 0.001537323
-            inSlope: -0.0031247598
-            outSlope: -0.0031247598
-            tangentMode: 34
-            weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0
-          preInfinity: 2
-          postInfinity: 2
-          rotationOrder: 4
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: Armature|Walk
       takeName: Armature|Walk
       internalID: 0
@@ -267,19 +134,19 @@ ModelImporter:
           preInfinity: 2
           postInfinity: 2
           rotationOrder: 4
-      - name: Curve
+      - name: IKRightFootWeight
         curve:
           serializedVersion: 2
           curve:
           - serializedVersion: 3
             time: 0
-            value: 1.0047302
-            inSlope: -0.05856449
-            outSlope: -0.05856449
-            tangentMode: 34
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0.33333334
+            outWeight: 0
           - serializedVersion: 3
             time: 0.4661029
             value: 0.97743315
