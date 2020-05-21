@@ -25,8 +25,8 @@ public class FootIKControl : MonoBehaviour
 
     private void OnAnimatorIK(int layerIndex)
     {
-        animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 1f);
-        animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 1f);
+        animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, animator.GetFloat("IKLeftFootWeight"));
+        animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, animator.GetFloat("IKLeftFootWeight"));
 
         //left
         RaycastHit hitLeft;
@@ -39,8 +39,8 @@ public class FootIKControl : MonoBehaviour
             //animator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(transform.forward, hitLeft.normal));
         }
 
-        animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 1f);
-        animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 1f);
+        animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, animator.GetFloat("IKRightFootWeight"));
+        animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, animator.GetFloat("IKRightFootWeight"));
 
         //right
         RaycastHit hitRight;
