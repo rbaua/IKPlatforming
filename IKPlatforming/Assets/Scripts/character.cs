@@ -7,7 +7,7 @@ public class character : MonoBehaviour{
     public float speed = 6.0f;
     public float rotateSpeed = 6.0f;
     public float jumpSpeed = 8.0f;
-    public float gravity = 20.0f;
+    public float gravity = 30.0f;
 
     public Animator animator;
 
@@ -23,6 +23,11 @@ public class character : MonoBehaviour{
     // Update is called once per frame
     void Update()
     {
+
+      print(controller.isGrounded);
+
+      //Executes when character is on the ground
+      if(controller.isGrounded){
         //Forward-Backwards movment using F/B Arrow Keys
         moveDirection = new Vector3(0.0f, 0.0f, Input.GetAxis("Vertical"));
 
@@ -32,24 +37,27 @@ public class character : MonoBehaviour{
         //Rotation using R/L Arrow Keys
         transform.Rotate(0, Input.GetAxis("Horizontal"), 0);
 
+     }
+
+        //If jump is pressed, move upwards; elif falling, apply gravity.
         if (Input.GetButton("Jump")){
            moveDirection.y = jumpSpeed;
-        } else {
-           moveDirection.y = -4.0f;
+           //Disables walking animation while jumping up
+           animator.SetBool("Walk", false);
+        } else if (controller.isGrounded == false) {
+           moveDirection.y += (-gravity * Time.deltaTime);
         }
 
-        //Gravity
-        //moveDirection.y -= (gravity * Time.deltaTime);
-        //moveDirection.y = -4.0f;
-
+        //Move character
         controller.Move(moveDirection * Time.deltaTime);
 
-
-        if ( Input.GetAxis("Vertical") > 0 )
+        //Animations
+        //
+        if ( Input.GetAxis("Vertical") > 0 && controller.isGrounded == true)
         {
             animator.SetBool("Walk",true);
         }
-        else if ( Input.GetAxis("Vertical") > 0 )
+        else if ( Input.GetAxis("Vertical") > 0 && controller.isGrounded == true)
         {
             // Placeholder for walking backwards
         }
@@ -58,13 +66,5 @@ public class character : MonoBehaviour{
             animator.SetBool("Walk", false);
         }
 
-    }
-
-    //code from AMartin223: https://answers.unity.com/questions/17566/how-can-i-make-my-player-a-charactercontroller-pus.html
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Rigidbody body = hit.collider.attachedRigidbody;
-        if (body != null && !body.isKinematic)
-            body.velocity += hit.controller.velocity;
     }
 }

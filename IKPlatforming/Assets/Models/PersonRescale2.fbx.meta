@@ -12,6 +12,9 @@ ModelImporter:
   - first:
       74: -866027535497846156
     second: Armature|WalkRoot
+  - first:
+      74: 3800721468275536773
+    second: Armature|Walk (1)
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -47,35 +50,6 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Idle
-      takeName: Armature|Idle
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 19
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: Armature|Walk
       takeName: Armature|Walk
       internalID: 0
@@ -87,7 +61,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -106,44 +80,53 @@ ModelImporter:
           - serializedVersion: 3
             time: 0
             value: 1
-            inSlope: 0.035885327
-            outSlope: 0.035885327
+            inSlope: -3.0884795
+            outSlope: -3.0884795
             tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0.27391452
+            outWeight: 1
           - serializedVersion: 3
-            time: 0.09793998
-            value: 0
-            inSlope: 0
-            outSlope: 0
+            time: 0.03682746
+            value: 0.008878589
+            inSlope: -0.430786
+            outSlope: -0.430786
             tangentMode: 0
             weightedMode: 0
             inWeight: 0.33333334
-            outWeight: 0.33333334
+            outWeight: 0.7968512
           - serializedVersion: 3
-            time: 0.4045694
-            value: 0
-            inSlope: 0
-            outSlope: 0
+            time: 0.29265684
+            value: 0.00078481436
+            inSlope: -0.0652607
+            outSlope: -0.0652607
             tangentMode: 0
             weightedMode: 0
             inWeight: 0.33333334
-            outWeight: 0.33333334
+            outWeight: 0.47872534
           - serializedVersion: 3
-            time: 0.5215711
-            value: 1
-            inSlope: 0
-            outSlope: 0
+            time: 0.55159706
+            value: 0.04976297
+            inSlope: 0.64507043
+            outSlope: 0.64507043
             tangentMode: 0
             weightedMode: 0
             inWeight: 0.33333334
-            outWeight: 0.33333334
+            outWeight: 1
+          - serializedVersion: 3
+            time: 0.66120565
+            value: 0.9943919
+            inSlope: 0.098546095
+            outSlope: 0.098546095
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.38002026
           - serializedVersion: 3
             time: 1
             value: 1
-            inSlope: 0
-            outSlope: 0
+            inSlope: 0.016553055
+            outSlope: 0.016553055
             tangentMode: 34
             weightedMode: 0
             inWeight: 0.33333334
@@ -160,43 +143,43 @@ ModelImporter:
             value: 1
             inSlope: 0
             outSlope: 0
-            tangentMode: 34
+            tangentMode: 0
             weightedMode: 0
             inWeight: 0
-            outWeight: 0.33333334
+            outWeight: 0
           - serializedVersion: 3
-            time: 0.49317148
-            value: 1
-            inSlope: 0
-            outSlope: 0
+            time: 0.4661029
+            value: 0.97743315
+            inSlope: -0.39276865
+            outSlope: -0.39276865
             tangentMode: 0
             weightedMode: 0
             inWeight: 0.33333334
-            outWeight: 0.33333334
+            outWeight: 1
           - serializedVersion: 3
-            time: 0.60261875
-            value: 0
-            inSlope: 0
-            outSlope: 0
+            time: 0.50453293
+            value: 0.0546463
+            inSlope: -0.6200909
+            outSlope: -0.6200909
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0.33333334
-            outWeight: 0.33333334
+            inWeight: 1
+            outWeight: 0.19164616
           - serializedVersion: 3
-            time: 0.90288544
-            value: 0
-            inSlope: 0
-            outSlope: 0
+            time: 0.9544147
+            value: 0.059701122
+            inSlope: 0.3757555
+            outSlope: 0.3757555
             tangentMode: 0
             weightedMode: 0
-            inWeight: 0.33333334
+            inWeight: 0.20630765
             outWeight: 0.33333334
           - serializedVersion: 3
-            time: 1
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
+            time: 1.002289
+            value: 1.0000148
+            inSlope: 19.64129
+            outSlope: 19.64129
+            tangentMode: 34
             weightedMode: 0
             inWeight: 0.33333334
             outWeight: 0
@@ -221,6 +204,35 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Idle
+      takeName: Armature|Idle
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -278,7 +290,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human:
-    - boneName: Dynamic Base
+    - boneName: Static Base
       humanName: Hips
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -334,7 +346,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Torso2
+    - boneName: Torso1
       humanName: Spine
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -342,7 +354,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Torso3
+    - boneName: Torso2
       humanName: Chest
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -438,11 +450,24 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
+    - boneName: Torso3
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
     skeleton:
     - name: PersonRescale2(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mesh
+      parentName: PersonRescale2(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: Armature
       parentName: PersonRescale2(Clone)
@@ -454,61 +479,11 @@ ModelImporter:
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0.7071068, y: 0.00000003090862, z: -0.70710677, w: 0.00000003090862}
       scale: {x: 1, y: 0.99999994, z: 1}
-    - name: ArmTarget.L
-      parentName: Static Base
-      position: {x: -5.517641, y: 0.0000005364418, z: 2.4698234}
-      rotation: {x: 0.7071068, y: 0.00000003090862, z: -0.70710677, w: 0.00000003090862}
-      scale: {x: 1, y: 1, z: 1}
-    - name: ArmTarget.R
-      parentName: Static Base
-      position: {x: -5.517641, y: 0.0000005364418, z: -2.4698238}
-      rotation: {x: 0.7071068, y: 0.00000003090862, z: -0.70710677, w: 0.00000003090862}
-      scale: {x: 1, y: 1, z: 1}
     - name: Dynamic Base
       parentName: Static Base
       position: {x: -3.5456195, y: -0.000000059604645, z: -0.00000013593632}
       rotation: {x: 0.7071068, y: 0.00000003090862, z: -0.70710677, w: 0.00000003090862}
       scale: {x: 1, y: 1, z: 1}
-    - name: Thigh.L
-      parentName: Dynamic Base
-      position: {x: -0.3950184, y: -0.00000029802322, z: -0.17527843}
-      rotation: {x: 0.5079455, y: 0.49254274, z: -0.5072905, w: -0.49198526}
-      scale: {x: 1.0000001, y: 0.99999994, z: 1}
-    - name: Shin.L
-      parentName: Thigh.L
-      position: {x: 0.000000098429155, y: 1.5535489, z: -0.000000007188646}
-      rotation: {x: 0.002019527, y: 0.05766589, z: -0.031166682, w: 0.9978473}
-      scale: {x: 1, y: 1, z: 1.0000002}
-    - name: Foot.L
-      parentName: Shin.L
-      position: {x: -0.00000020489097, y: 1.5019577, z: -0.000000020489097}
-      rotation: {x: -0.036440074, y: -0.043724075, z: 0.60297984, w: 0.7957233}
-      scale: {x: 0.9999999, y: 1, z: 0.9999999}
-    - name: Toes.L
-      parentName: Foot.L
-      position: {x: -0.000000026542693, y: 0.5782463, z: 0.000000012165401}
-      rotation: {x: -0.00039814497, y: -0.0025876225, z: 0.15207648, w: 0.9883653}
-      scale: {x: 0.99999994, y: 1, z: 1}
-    - name: Thigh.R
-      parentName: Dynamic Base
-      position: {x: 0.3950184, y: -0.00000029802322, z: -0.17527843}
-      rotation: {x: 0.50823647, y: -0.4927199, z: 0.50699914, w: -0.4918076}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Shin.R
-      parentName: Thigh.R
-      position: {x: 0.00000013528916, y: 1.5535489, z: -0.0000000044237822}
-      rotation: {x: 0.0020195267, y: -0.05766589, z: 0.031166676, w: 0.9978473}
-      scale: {x: 0.9999999, y: 1, z: 1.0000002}
-    - name: Foot.R
-      parentName: Shin.R
-      position: {x: -0.0000001937151, y: 1.5019574, z: 0.000000056810677}
-      rotation: {x: -0.036440093, y: 0.04372411, z: -0.6029797, w: 0.79572344}
-      scale: {x: 0.99999994, y: 0.9999998, z: 0.9999999}
-    - name: Toes.R
-      parentName: Foot.R
-      position: {x: -0.00000004749745, y: 0.5782461, z: 0.000000011234079}
-      rotation: {x: -0.00039814488, y: 0.0025876227, z: -0.1520765, w: 0.9883653}
-      scale: {x: 1, y: 1.0000001, z: 1}
     - name: Torso1
       parentName: Dynamic Base
       position: {x: -0, y: -7.1054274e-15, z: 0}
@@ -549,6 +524,11 @@ ModelImporter:
       position: {x: -0, y: 0.7421174, z: 7.1054274e-15}
       rotation: {x: -0.5319311, y: 0.46357724, z: 0.53421855, w: 0.46557066}
       scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: ElbowController.L
+      parentName: Shoulder.L
+      position: {x: 0.061797433, y: 1.581545, z: 0.10746129}
+      rotation: {x: 0.046913847, y: 0.04994083, z: -0.7055489, w: 0.705341}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.9999998}
     - name: Arm.L
       parentName: Shoulder.L
       position: {x: -0.0000000019281075, y: 0.6772912, z: -0.00000027597054}
@@ -564,16 +544,16 @@ ModelImporter:
       position: {x: -0.000000003426294, y: 0.8906679, z: 0.00000023571444}
       rotation: {x: 0.0153704975, y: -0.0011675499, z: -0.03448938, w: 0.9992862}
       scale: {x: 1, y: 0.9999999, z: 0.99999994}
-    - name: ElbowController.L
-      parentName: Shoulder.L
-      position: {x: 0.061797433, y: 1.581545, z: 0.10746129}
-      rotation: {x: 0.046913847, y: 0.04994083, z: -0.7055489, w: 0.705341}
-      scale: {x: 0.9999999, y: 0.9999999, z: 0.9999998}
     - name: Shoulder.R
       parentName: Torso3
       position: {x: -0, y: 0.7421174, z: 7.1054274e-15}
       rotation: {x: 0.5319311, y: 0.46357724, z: 0.53421855, w: -0.46557066}
       scale: {x: 1.0000001, y: 1.0000001, z: 1}
+    - name: ElbowController.R
+      parentName: Shoulder.R
+      position: {x: -0.061797433, y: 1.581545, z: 0.10746129}
+      rotation: {x: 0.046913847, y: -0.04994083, z: 0.7055489, w: 0.705341}
+      scale: {x: 0.9999999, y: 0.9999999, z: 0.9999998}
     - name: Arm.R
       parentName: Shoulder.R
       position: {x: 0.0000000019281075, y: 0.6772912, z: -0.00000027597054}
@@ -589,11 +569,46 @@ ModelImporter:
       position: {x: 0.000000003426294, y: 0.8906679, z: 0.00000023571444}
       rotation: {x: 0.0153704975, y: 0.0011675499, z: 0.03448938, w: 0.9992862}
       scale: {x: 1, y: 0.9999999, z: 0.99999994}
-    - name: ElbowController.R
-      parentName: Shoulder.R
-      position: {x: -0.061797433, y: 1.581545, z: 0.10746129}
-      rotation: {x: 0.046913847, y: -0.04994083, z: 0.7055489, w: 0.705341}
-      scale: {x: 0.9999999, y: 0.9999999, z: 0.9999998}
+    - name: Thigh.L
+      parentName: Dynamic Base
+      position: {x: -0.3950184, y: -0.00000029802322, z: -0.17527843}
+      rotation: {x: 0.5079455, y: 0.49254274, z: -0.5072905, w: -0.49198526}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: Shin.L
+      parentName: Thigh.L
+      position: {x: 0.000000098429155, y: 1.5535489, z: -0.000000007188646}
+      rotation: {x: 0.002019527, y: 0.05766589, z: -0.031166682, w: 0.9978473}
+      scale: {x: 1, y: 1, z: 1.0000002}
+    - name: Foot.L
+      parentName: Shin.L
+      position: {x: -0.00000020489097, y: 1.5019577, z: -0.000000020489097}
+      rotation: {x: -0.036440074, y: -0.043724075, z: 0.60297984, w: 0.7957233}
+      scale: {x: 0.9999999, y: 1, z: 0.9999999}
+    - name: Toes.L
+      parentName: Foot.L
+      position: {x: -0.000000026542693, y: 0.5782463, z: 0.000000012165401}
+      rotation: {x: -0.00039814497, y: -0.0025876225, z: 0.15207648, w: 0.9883653}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Thigh.R
+      parentName: Dynamic Base
+      position: {x: 0.3950184, y: -0.00000029802322, z: -0.17527843}
+      rotation: {x: 0.50823647, y: -0.4927199, z: 0.50699914, w: -0.4918076}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Shin.R
+      parentName: Thigh.R
+      position: {x: 0.00000013528916, y: 1.5535489, z: -0.0000000044237822}
+      rotation: {x: 0.0020195267, y: -0.05766589, z: 0.031166676, w: 0.9978473}
+      scale: {x: 0.9999999, y: 1, z: 1.0000002}
+    - name: Foot.R
+      parentName: Shin.R
+      position: {x: -0.0000001937151, y: 1.5019574, z: 0.000000056810677}
+      rotation: {x: -0.036440093, y: 0.04372411, z: -0.6029797, w: 0.79572344}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.9999999}
+    - name: Toes.R
+      parentName: Foot.R
+      position: {x: -0.00000004749745, y: 0.5782461, z: 0.000000011234079}
+      rotation: {x: -0.00039814488, y: 0.0025876227, z: -0.1520765, w: 0.9883653}
+      scale: {x: 1, y: 1.0000001, z: 1}
     - name: FootTarget.L
       parentName: Static Base
       position: {x: -0.32012048, y: -1.4798336, z: 0.3950184}
@@ -608,6 +623,11 @@ ModelImporter:
       parentName: FootTarget.L
       position: {x: -0, y: -1.4655391, z: 1.5011997}
       rotation: {x: 0, y: 0, z: 1, w: 0.00000004371139}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ArmTarget.L
+      parentName: Static Base
+      position: {x: -5.517641, y: 0.0000005364418, z: 2.4698234}
+      rotation: {x: 0.7071068, y: 0.00000003090862, z: -0.70710677, w: 0.00000003090862}
       scale: {x: 1, y: 1, z: 1}
     - name: FootTarget.R
       parentName: Static Base
@@ -624,10 +644,10 @@ ModelImporter:
       position: {x: -0, y: -1.4655392, z: 1.5011997}
       rotation: {x: 0, y: 0, z: 1, w: 0.00000004371139}
       scale: {x: 1, y: 1, z: 1}
-    - name: Mesh
-      parentName: PersonRescale2(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: -4.3297806e-17, y: 0.7071068, z: 0.7071068, w: -4.3297806e-17}
+    - name: ArmTarget.R
+      parentName: Static Base
+      position: {x: -5.517641, y: 0.0000005364418, z: -2.4698238}
+      rotation: {x: 0.7071068, y: 0.00000003090862, z: -0.70710677, w: 0.00000003090862}
       scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
