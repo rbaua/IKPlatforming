@@ -281,7 +281,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human:
-    - boneName: Static Base
+    - boneName: Dynamic Base
       humanName: Hips
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -337,7 +337,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Torso1
+    - boneName: Torso2
       humanName: Spine
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -345,7 +345,7 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: Torso2
+    - boneName: Torso3
       humanName: Chest
       limit:
         min: {x: 0, y: 0, z: 0}
@@ -435,14 +435,6 @@ ModelImporter:
         modified: 0
     - boneName: Toes.R
       humanName: RightToes
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
-    - boneName: Torso3
-      humanName: UpperChest
       limit:
         min: {x: 0, y: 0, z: 0}
         max: {x: 0, y: 0, z: 0}
