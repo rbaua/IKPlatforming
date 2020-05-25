@@ -61,7 +61,7 @@ public class character : MonoBehaviour{
         {
             // Placeholder for walking backwards
         }
-        else
+        else if(Input.GetAxis("Vertical") <= 0)
         {
             animator.SetBool("Walk", false);
         }

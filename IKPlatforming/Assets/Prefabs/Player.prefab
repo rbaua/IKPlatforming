@@ -61,8 +61,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90546d0c8f17db74bb8a927509a1c6d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   speed: 6
   rotateSpeed: 6
   animator: {fileID: 4340541792565696300}
@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f7c033d47d85f84d8861fd563d240ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   ikActive: 0
   rightHandObj: {fileID: 0}
   lookObj: {fileID: 0}
@@ -91,7 +91,7 @@ PrefabInstance:
     - target: {fileID: -6057140222963153312, guid: 043041ffc92607a48a4469b9260438f6,
         type: 3}
       propertyPath: m_Controller
-      value: 
+      value:
       objectReference: {fileID: 9100000, guid: 5ff335cb9cf528b46abb67072407f41d, type: 2}
     - target: {fileID: -6057140222963153312, guid: 043041ffc92607a48a4469b9260438f6,
         type: 3}
