@@ -70,5 +70,18 @@ public class character : MonoBehaviour{
             animator.SetInteger("WalkDirection", 0);
         }
 
+        if ( Input.GetAxis("Horizontal") < 0 && controller.isGrounded == true)
+        {
+            animator.SetInteger("SwivelDirection", -1);
+        }
+        else if (Input.GetAxis("Horizontal") > 0 && controller.isGrounded == true)
+        {
+            animator.SetInteger("SwivelDirection", 1);
+        }
+        else if (Input.GetAxis("Horizontal") == 0)
+        {
+            animator.SetInteger("SwivelDirection", 0);
+        }
+
     }
 }
