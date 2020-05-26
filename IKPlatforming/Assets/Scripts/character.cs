@@ -55,15 +55,19 @@ public class character : MonoBehaviour{
         //
         if ( Input.GetAxis("Vertical") > 0 && controller.isGrounded == true)
         {
-            animator.SetBool("Walk",true);
+            //animator.SetFloat("VerticalAxis", Input.GetAxis("Vertical"));
+            //animator.SetFloat("HorizontalAxis", Input.GetAxis("Horizontal"));
+            animator.SetInteger("WalkDirection",1);
         }
-        else if ( Input.GetAxis("Vertical") > 0 && controller.isGrounded == true)
+        else if ( Input.GetAxis("Vertical") < 0 && controller.isGrounded == true)
         {
             // Placeholder for walking backwards
+            animator.SetInteger("WalkDirection", -1);
         }
-        else if(Input.GetAxis("Vertical") <= 0)
+        else if(Input.GetAxis("Vertical") == 0)
         {
-            animator.SetBool("Walk", false);
+            //animator.SetBool("Walk", false);
+            animator.SetInteger("WalkDirection", 0);
         }
 
     }
