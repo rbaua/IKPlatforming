@@ -13,6 +13,7 @@ public class character : MonoBehaviour{
 
     private Vector3 moveDirection = Vector3.zero;
     private CharacterController controller;
+    private int falling = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class character : MonoBehaviour{
       //Executes when character is on the ground
       if(controller.isGrounded){
         //Forward-Backwards movment using F/B Arrow Keys
+        falling = 0;
         moveDirection = new Vector3(0.0f, 0.0f, Input.GetAxis("Vertical"));
 
         moveDirection = transform.TransformDirection(moveDirection);
@@ -44,25 +46,32 @@ public class character : MonoBehaviour{
            moveDirection.y = jumpSpeed;
            //Disables walking animation while jumping up
            animator.SetBool("Walk", false);
-        } else if (controller.isGrounded == false) {
+           falling = 1;
+        } else //if (controller.isGrounded == false)
+        {
            moveDirection.y += (-gravity * Time.deltaTime);
         }
+
+        print(moveDirection.y);
 
         //Move character
         controller.Move(moveDirection * Time.deltaTime);
 
         //Animations
         //
-        if ( Input.GetAxis("Vertical") > 0 && controller.isGrounded == true)
+        if ( Input.GetAxis("Vertical") > 0 && moveDirection.y < 0.0f && falling != 1)
         {
+            //print("case1");
             animator.SetBool("Walk",true);
         }
-        else if ( Input.GetAxis("Vertical") > 0 && controller.isGrounded == true)
+        else if ( Input.GetAxis("Vertical") < 0 && moveDirection.y < 0.0f && falling != 1)
         {
+            //print("case2");
             // Placeholder for walking backwards
         }
-        else if(Input.GetAxis("Vertical") <= 0)
+         else //else if(Input.GetAxis("Vertical") <= 0)
         {
+            //print("case3");
             animator.SetBool("Walk", false);
         }
 
