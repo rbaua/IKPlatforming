@@ -15,42 +15,44 @@ public class FootIKControl : MonoBehaviour
 
     public bool ikActive = false;
     // Start is called before the first frame update
+
+    private Vector3 leftFootPosition;
+    private Vector3 rightFootPosition;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         enviroLayer = LayerMask.GetMask("Environment");
         player = LayerMask.GetMask("Player");
+
+        UpdateIKFootPosition(AvatarIKGoal.LeftFoot);
+        UpdateIKFootPosition(AvatarIKGoal.RightFoot);
     }
 
 
     private void OnAnimatorIK(int layerIndex)
     {
-        animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, animator.GetFloat("IKLeftFootWeight"));
-        animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, animator.GetFloat("IKLeftFootWeight"));
+        float leftFootWeight = animator.GetFloat("IKLeftFootWeight");
+        float rightFootWeight = animator.GetFloat("IKRightFootWeight");
 
-        //left
-        RaycastHit hitLeft;
-        Ray toGroundLeft = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
-        if(Physics.Raycast(toGroundLeft, out hitLeft, distanceToGround + 1f))
+        float leftFootCalc = animator.GetFloat("IKLeftFootCalc");
+        float rightFootCalc = animator.GetFloat("IKRightFootCalc");
+
+        animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, leftFootWeight);
+        animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, leftFootWeight);
+
+        if ( leftFootCalc == 1.0f )
         {
-            Vector3 footPosition = hitLeft.point;
-            footPosition.y += distanceToGround;
-            animator.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
-            animator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(transform.forward, hitLeft.normal));
+            Debug.Log("Updating");
+            UpdateIKFootPosition(AvatarIKGoal.LeftFoot);
         }
 
-        animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, animator.GetFloat("IKRightFootWeight"));
-        animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, animator.GetFloat("IKRightFootWeight"));
+        animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, rightFootWeight);
+        animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, rightFootWeight);
 
-        //right
-        RaycastHit hitRight;
-        Ray toGroundRight = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down);
-        if (Physics.Raycast(toGroundRight, out hitRight, distanceToGround + 1f, enviroLayer))
+        if ( rightFootCalc == 1.0f )
         {
-            Vector3 footPosition = hitRight.point;
-            footPosition.y += distanceToGround;
-            animator.SetIKPosition(AvatarIKGoal.RightFoot, footPosition);
-            animator.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.LookRotation(transform.forward, hitRight.normal));
+            UpdateIKFootPosition(AvatarIKGoal.RightFoot);
         }
     }
     
@@ -61,4 +63,30 @@ public class FootIKControl : MonoBehaviour
         Gizmos.color = Color.red;
         //Gizmos.DrawRay(gizmoRay);
     }
+
+    private void UpdateIKFootPosition(AvatarIKGoal foot)
+    {
+        RaycastHit hit;
+        Ray toGround = new Ray(animator.GetIKPosition(foot) + Vector3.up, Vector3.down);
+        if (Physics.Raycast(toGround, out hit, distanceToGround + 1f, enviroLayer))
+        {
+            Vector3 footPosition = hit.point;
+            footPosition.y += distanceToGround;
+            animator.SetIKPosition(foot, footPosition);
+            animator.SetIKRotation(foot, Quaternion.LookRotation(transform.forward, hit.normal));
+        }
+    }
+
+    /*private void updateLeftIKFootPosition()
+    {
+        RaycastHit hit;
+        Ray toGround = new Ray(animator.GetIKPosition(foot) + Vector3.up, Vector3.down);
+        if (Physics.Raycast(toGround, out hit, distanceToGround + 1f, enviroLayer))
+        {
+            Vector3 footPosition = hit.point;
+            footPosition.y += distanceToGround;
+            animator.SetIKPosition(foot, footPosition);
+            animator.SetIKRotation(foot, Quaternion.LookRotation(transform.forward, hit.normal));
+        }
+    }*/
 }
