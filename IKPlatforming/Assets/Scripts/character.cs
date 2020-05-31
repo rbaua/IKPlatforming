@@ -25,7 +25,7 @@ public class character : MonoBehaviour{
     void Update()
     {
 
-        print(controller.isGrounded);
+        //print(controller.isGrounded);
 
     //Executes when character is on the ground
     if(controller.isGrounded){
@@ -52,7 +52,7 @@ public class character : MonoBehaviour{
            moveDirection.y += (-gravity * Time.deltaTime);
         }
 
-        print(moveDirection.y);
+        //print(moveDirection.y);
 
         //Move character
         controller.Move(moveDirection * Time.deltaTime);
