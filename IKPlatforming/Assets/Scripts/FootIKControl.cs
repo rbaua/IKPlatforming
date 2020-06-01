@@ -5,9 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class FootIKControl : MonoBehaviour
 {
-    // I need one fo the legs to equal legLength
-    // Other leg needs to be in the range of 0 - legLength
-
     protected Animator animator;
 
     [Range(0,1f)]
@@ -21,15 +18,14 @@ public class FootIKControl : MonoBehaviour
     LayerMask player;
 
     public bool ikActive = false;
-    // Start is called before the first frame update
 
-    public Vector3 leftFootPosition;
-    public Quaternion leftFootRotation;
-    public float leftLegLength;
+    private Vector3 leftFootPosition;
+    private Quaternion leftFootRotation;
+    private float leftLegLength;
 
-    public Vector3 rightFootPosition;
-    public Quaternion rightFootRotation;
-    public float rightLegLength;
+    private Vector3 rightFootPosition;
+    private Quaternion rightFootRotation;
+    private float rightLegLength;
 
     void Start()
     {
@@ -127,17 +123,4 @@ public class FootIKControl : MonoBehaviour
 
         transform.position = transform.parent.transform.position + new Vector3(0, torsoDisplacement, 0);
     }
-
-    /*private void updateLeftIKFootPosition()
-    {
-        RaycastHit hit;
-        Ray toGround = new Ray(animator.GetIKPosition(foot) + Vector3.up, Vector3.down);
-        if (Physics.Raycast(toGround, out hit, distanceToGround + 1f, enviroLayer))
-        {
-            Vector3 footPosition = hit.point;
-            footPosition.y += distanceToGround;
-            animator.SetIKPosition(foot, footPosition);
-            animator.SetIKRotation(foot, Quaternion.LookRotation(transform.forward, hit.normal));
-        }
-    }*/
 }
