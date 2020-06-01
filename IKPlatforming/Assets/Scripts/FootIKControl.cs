@@ -23,10 +23,13 @@ public class FootIKControl : MonoBehaviour
     public bool ikActive = false;
     // Start is called before the first frame update
 
-    private Vector3 leftFootPosition;
-    private Vector3 rightFootPosition;
-    private float leftLegLength;
-    private float rightLegLength;
+    public Vector3 leftFootPosition;
+    public Quaternion leftFootRotation;
+    public float leftLegLength;
+
+    public Vector3 rightFootPosition;
+    public Quaternion rightFootRotation;
+    public float rightLegLength;
 
     void Start()
     {
@@ -56,6 +59,9 @@ public class FootIKControl : MonoBehaviour
             UpdateLeftFootPosition();
         }
 
+        animator.SetIKPosition(AvatarIKGoal.LeftFoot, leftFootPosition);
+        animator.SetIKRotation(AvatarIKGoal.LeftFoot, leftFootRotation);
+
         animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, rightFootWeight);
         animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, rightFootWeight);
 
@@ -64,10 +70,8 @@ public class FootIKControl : MonoBehaviour
             UpdateRightFootPosition();
         }
 
-        if(rightLegLength > 1f)
-        {
-            Debug.Log(rightLegLength);
-        }
+        animator.SetIKPosition(AvatarIKGoal.RightFoot, rightFootPosition);
+        animator.SetIKRotation(AvatarIKGoal.RightFoot, rightFootRotation);
 
         UpdateFigureHeight();
     }
@@ -83,34 +87,30 @@ public class FootIKControl : MonoBehaviour
     private void UpdateLeftFootPosition()
     {
         RaycastHit hit;
-        Ray toGround = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + legLength * Vector3.up, Vector3.down);
-        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength, enviroLayer))
+        Ray toGround = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + legLength * Vector3.up + new Vector3(0,1f,0), Vector3.down);
+        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength + .1f, enviroLayer))
         {
             Vector3 footPosition = hit.point;
             leftLegLength = transform.parent.transform.position.y - footPosition.y + capsuleBottomHeight;
             footPosition.y += distanceToGround;
 
-            animator.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
-            animator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(transform.forward, hit.normal));
-        }
-        else
-        {
-            leftLegLength = legLength;
+            leftFootPosition = footPosition;
+            leftFootRotation = Quaternion.LookRotation(transform.forward, hit.normal);
         }
     }
 
     private void UpdateRightFootPosition()
     {
         RaycastHit hit;
-        Ray toGround = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot) + legLength * Vector3.up, Vector3.down);
-        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength, enviroLayer))
+        Ray toGround = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot) + legLength * Vector3.up + new Vector3(0, 1f, 0), Vector3.down);
+        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength + .1f, enviroLayer))
         {
             Vector3 footPosition = hit.point;
             rightLegLength = transform.parent.transform.position.y - footPosition.y + capsuleBottomHeight;
             footPosition.y += distanceToGround;
 
-            animator.SetIKPosition(AvatarIKGoal.RightFoot, footPosition);
-            animator.SetIKRotation(AvatarIKGoal.RightFoot, Quaternion.LookRotation(transform.forward, hit.normal));
+            rightFootPosition = footPosition;
+            rightFootRotation = Quaternion.LookRotation(transform.forward, hit.normal);
         }
         else
         {
@@ -126,6 +126,7 @@ public class FootIKControl : MonoBehaviour
     private void UpdateFigureHeight()
     {
         float unbentLegLength = Mathf.Max(leftLegLength, rightLegLength);
+        Debug.Log(unbentLegLength);
         float torsoDisplacement = legLength - unbentLegLength - .1f;
 
         transform.position = transform.parent.transform.position + new Vector3(0, torsoDisplacement, 0);
