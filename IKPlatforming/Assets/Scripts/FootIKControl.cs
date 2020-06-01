@@ -88,7 +88,7 @@ public class FootIKControl : MonoBehaviour
     {
         RaycastHit hit;
         Ray toGround = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + legLength * Vector3.up + new Vector3(0,1f,0), Vector3.down);
-        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength + .1f, enviroLayer))
+        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength + 1f, enviroLayer))
         {
             Vector3 footPosition = hit.point;
             leftLegLength = transform.parent.transform.position.y - footPosition.y + capsuleBottomHeight;
@@ -103,7 +103,7 @@ public class FootIKControl : MonoBehaviour
     {
         RaycastHit hit;
         Ray toGround = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot) + legLength * Vector3.up + new Vector3(0, 1f, 0), Vector3.down);
-        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength + .1f, enviroLayer))
+        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength + 1f, enviroLayer))
         {
             Vector3 footPosition = hit.point;
             rightLegLength = transform.parent.transform.position.y - footPosition.y + capsuleBottomHeight;
@@ -111,10 +111,6 @@ public class FootIKControl : MonoBehaviour
 
             rightFootPosition = footPosition;
             rightFootRotation = Quaternion.LookRotation(transform.forward, hit.normal);
-        }
-        else
-        {
-            rightLegLength = legLength;
         }
     }
 
