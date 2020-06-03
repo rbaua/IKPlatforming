@@ -23,9 +23,14 @@ public class FootIKControl : MonoBehaviour
     private Quaternion leftFootRotation;
     private float leftLegLength;
 
-    private Vector3 rightFootPosition;
-    private Quaternion rightFootRotation;
-    private float rightLegLength;
+    public Vector3 rightFootPosition;
+    public Quaternion rightFootRotation;
+    public float rightLegLength;
+
+    private Ray rightFootRay;
+
+    public GameObject leftFootBone;
+    public GameObject rightFootBone;
 
     void Start()
     {
@@ -50,7 +55,7 @@ public class FootIKControl : MonoBehaviour
 
         ResetFigureHeight();
 
-        if ( leftFootCalc == 1.0f )
+        if ( leftFootCalc > .9f )
         {
             UpdateLeftFootPosition();
         }
@@ -61,7 +66,7 @@ public class FootIKControl : MonoBehaviour
         animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, rightFootWeight);
         animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, rightFootWeight);
 
-        if ( rightFootCalc == 1.0f )
+        if ( rightFootCalc > .9f )
         {
             UpdateRightFootPosition();
         }
@@ -75,7 +80,7 @@ public class FootIKControl : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //Ray gizmoRay = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
+        //Ray gizmoRay = rightFootRay;
         Gizmos.color = Color.red;
         //Gizmos.DrawRay(gizmoRay);
     }
@@ -83,8 +88,8 @@ public class FootIKControl : MonoBehaviour
     private void UpdateLeftFootPosition()
     {
         RaycastHit hit;
-        Ray toGround = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + legLength * Vector3.up + new Vector3(0,1f,0), Vector3.down);
-        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength + 1f, enviroLayer))
+        Ray toGround = new Ray(leftFootBone.transform.position + legLength * Vector3.up + new Vector3(0,10f,0), Vector3.down); //animator.GetIKPosition(AvatarIKGoal.LeftFoot)
+        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength + 10f, enviroLayer))
         {
             Vector3 footPosition = hit.point;
             leftLegLength = transform.parent.transform.position.y - footPosition.y + capsuleBottomHeight;
@@ -98,8 +103,8 @@ public class FootIKControl : MonoBehaviour
     private void UpdateRightFootPosition()
     {
         RaycastHit hit;
-        Ray toGround = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot) + legLength * Vector3.up + new Vector3(0, 1f, 0), Vector3.down);
-        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength + 1f, enviroLayer))
+        rightFootRay = new Ray(rightFootBone.transform.position + legLength * Vector3.up + new Vector3(0, 10f, 0), Vector3.down); //animator.GetIKPosition(AvatarIKGoal.RightFoot)
+        if (Physics.Raycast(rightFootRay, out hit, distanceToGround + legLength + 10f, enviroLayer))
         {
             Vector3 footPosition = hit.point;
             rightLegLength = transform.parent.transform.position.y - footPosition.y + capsuleBottomHeight;
@@ -107,6 +112,7 @@ public class FootIKControl : MonoBehaviour
 
             rightFootPosition = footPosition;
             rightFootRotation = Quaternion.LookRotation(transform.forward, hit.normal);
+            Debug.Log(rightFootPosition);
         }
     }
 
@@ -118,7 +124,6 @@ public class FootIKControl : MonoBehaviour
     private void UpdateFigureHeight()
     {
         float unbentLegLength = Mathf.Max(leftLegLength, rightLegLength);
-        Debug.Log(unbentLegLength);
         float torsoDisplacement = legLength - unbentLegLength - .1f;
 
         transform.position = transform.parent.transform.position + new Vector3(0, torsoDisplacement, 0);
