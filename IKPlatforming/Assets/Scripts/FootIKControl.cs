@@ -27,6 +27,8 @@ public class FootIKControl : MonoBehaviour
     private Quaternion rightFootRotation;
     private float rightLegLength;
 
+    public Material playerMaterial;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -48,6 +50,15 @@ public class FootIKControl : MonoBehaviour
         animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, leftFootWeight);
         animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, leftFootWeight);
 
+        if(leftFootWeight > .5)
+        {
+            playerMaterial.SetInt("Boolean_8A146678", 1);
+        }
+        else
+        {
+            playerMaterial.SetInt("Boolean_8A146678", 0);
+        }
+
         ResetFigureHeight();
 
         if ( leftFootCalc == 1.0f )
@@ -60,6 +71,15 @@ public class FootIKControl : MonoBehaviour
 
         animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, rightFootWeight);
         animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, rightFootWeight);
+
+        if (rightFootWeight > .5)
+        {
+            playerMaterial.SetInt("Boolean_6D8D6C42", 1);
+        }
+        else
+        {
+            playerMaterial.SetInt("Boolean_6D8D6C42", 0);
+        }
 
         if ( rightFootCalc == 1.0f )
         {

@@ -29,9 +29,14 @@ public class PointIK : MonoBehaviour
     private void OnAnimatorIK(int layerIndex)
     {
         animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1f);
+        Vector2 mousePosition = Input.mousePosition;
+        Quaternion pointRotation = transform.parent.rotation;
+        Vector3 pointPosition = animator.GetIKPosition(AvatarIKGoal.RightHand) + new Vector3(0, 0, mousePosition.y) + (mousePosition.x * transform.parent.forward);
+        Debug.Log(pointPosition);
 
-        Vector3 pointPosition = animator.GetIKPosition(AvatarIKGoal.RightHand) + (transform.forward * armLength) + (Input.mousePosition/100);
+        
         //footPosition.y += distanceToGround;
         animator.SetIKPosition(AvatarIKGoal.RightHand, pointPosition);
+        animator.SetIKRotation(AvatarIKGoal.RightHand, pointRotation);
     }
 }
