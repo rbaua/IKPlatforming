@@ -230,11 +230,7 @@ MonoBehaviour:
   legLength: 0
   capsuleBottomHeight: 0
   ikActive: 0
-  rightFootPosition: {x: 0, y: 0, z: 0}
-  rightFootRotation: {x: 0, y: 0, z: 0, w: 0}
-  rightLegLength: 0
-  leftFootBone: {fileID: 0}
-  rightFootBone: {fileID: 0}
+  playerMaterial: {fileID: 0}
 --- !u!1 &394303825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,11 +1082,7 @@ MonoBehaviour:
   legLength: 1.8
   capsuleBottomHeight: 2
   ikActive: 1
-  rightFootPosition: {x: 0, y: 0, z: 0}
-  rightFootRotation: {x: 0, y: 0, z: 0, w: 0}
-  rightLegLength: 0
-  leftFootBone: {fileID: 1915919789}
-  rightFootBone: {fileID: 1824902439}
+  playerMaterial: {fileID: 2100000, guid: 96fdbe9d3eac6de4da84302d36defa1c, type: 2}
 --- !u!4 &1614796514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 2d0145fc4c9759544a9d76d1ad5b6155,
@@ -1195,18 +1187,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1824902439 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4465750284982864829, guid: 2d0145fc4c9759544a9d76d1ad5b6155,
-    type: 3}
-  m_PrefabInstance: {fileID: 733021502}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1915919789 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2955568122471127281, guid: 2d0145fc4c9759544a9d76d1ad5b6155,
-    type: 3}
-  m_PrefabInstance: {fileID: 733021502}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1969137103
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,7 +1201,7 @@ GameObject:
   - component: {fileID: 1969137107}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -31,7 +31,7 @@ public class PointIK : MonoBehaviour
         animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1f);
         Vector2 mousePosition = Input.mousePosition;
         Quaternion pointRotation = transform.parent.rotation;
-        Vector3 pointPosition = animator.GetIKPosition(AvatarIKGoal.RightHand) + new Vector3(0, 0, mousePosition.y) + (mousePosition.x * transform.parent.forward);
+        Vector3 pointPosition = animator.GetIKPosition(AvatarIKGoal.RightHand) + (transform.parent.forward * armLength) + Camera.main.ScreenToWorldPoint(mousePosition * 200) + (-Camera.main.transform.position + transform.position);
         Debug.Log(pointPosition);
 
         
