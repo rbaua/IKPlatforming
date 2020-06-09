@@ -32,6 +32,13 @@ public class FootIKControl : MonoBehaviour
     public GameObject leftFootBone;
     public GameObject rightFootBone;
 
+    private float leftFootWeight;
+    private float rightFootWeight;
+    private float leftFootCalc;
+    private float rightFootCalc;
+
+
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -44,11 +51,11 @@ public class FootIKControl : MonoBehaviour
 
     private void OnAnimatorIK(int layerIndex)
     {
-        float leftFootWeight = animator.GetFloat("IKLeftFootWeight");
-        float rightFootWeight = animator.GetFloat("IKRightFootWeight");
+        leftFootWeight = animator.GetFloat("IKLeftFootWeight");
+        rightFootWeight = animator.GetFloat("IKRightFootWeight");
 
-        float leftFootCalc = animator.GetFloat("IKLeftFootCalc");
-        float rightFootCalc = animator.GetFloat("IKRightFootCalc");
+        leftFootCalc = animator.GetFloat("IKLeftFootCalc");
+        rightFootCalc = animator.GetFloat("IKRightFootCalc");
 
         animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, leftFootWeight);
         animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, leftFootWeight);
@@ -95,8 +102,14 @@ public class FootIKControl : MonoBehaviour
             leftLegLength = transform.parent.transform.position.y - footPosition.y + capsuleBottomHeight;
             footPosition.y += distanceToGround;
 
+            // Shamelessly stolen from https://answers.unity.com/questions/1591763/how-to-fix-the-rotation-of-my-ik-foot.html
+
+            Vector3 rotAxis = Vector3.Cross(Vector3.up, hit.normal);
+            float angle = Vector3.Angle(Vector3.up, hit.normal);
+            Quaternion rot = Quaternion.AngleAxis(angle * leftFootWeight, rotAxis);
+
             leftFootPosition = footPosition;
-            leftFootRotation = Quaternion.LookRotation(transform.forward, hit.normal);
+            leftFootRotation = rot;//Quaternion.LookRotation(transform.forward, hit.normal);
         }
     }
 
@@ -110,9 +123,12 @@ public class FootIKControl : MonoBehaviour
             rightLegLength = transform.parent.transform.position.y - footPosition.y + capsuleBottomHeight;
             footPosition.y += distanceToGround;
 
+            Vector3 rotAxis = Vector3.Cross(Vector3.up, hit.normal);
+            float angle = Vector3.Angle(Vector3.up, hit.normal);
+            Quaternion rot = Quaternion.AngleAxis(angle * rightFootWeight, rotAxis);
+
             rightFootPosition = footPosition;
-            rightFootRotation = Quaternion.LookRotation(transform.forward, hit.normal);
-            Debug.Log(rightFootPosition);
+            rightFootRotation = rot;//Quaternion.LookRotation(transform.forward, hit.normal);
         }
     }
 
