@@ -55,7 +55,7 @@ public class FootIKControl : MonoBehaviour
 
         ResetFigureHeight();
 
-        if ( leftFootCalc > .9f )
+        if ( leftFootCalc > .1f )
         {
             UpdateLeftFootPosition();
         }
@@ -66,7 +66,7 @@ public class FootIKControl : MonoBehaviour
         animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, rightFootWeight);
         animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, rightFootWeight);
 
-        if ( rightFootCalc > .9f )
+        if ( rightFootCalc > .1f )
         {
             UpdateRightFootPosition();
         }
