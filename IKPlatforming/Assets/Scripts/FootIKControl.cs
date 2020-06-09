@@ -23,11 +23,21 @@ public class FootIKControl : MonoBehaviour
     private Quaternion leftFootRotation;
     private float leftLegLength;
 
-    private Vector3 rightFootPosition;
-    private Quaternion rightFootRotation;
-    private float rightLegLength;
+    public Vector3 rightFootPosition;
+    public Quaternion rightFootRotation;
+    public float rightLegLength;
 
-    public Material playerMaterial;
+    private Ray rightFootRay;
+
+    public GameObject leftFootBone;
+    public GameObject rightFootBone;
+
+    private float leftFootWeight;
+    private float rightFootWeight;
+    private float leftFootCalc;
+    private float rightFootCalc;
+
+
 
     void Start()
     {
@@ -41,19 +51,18 @@ public class FootIKControl : MonoBehaviour
 
     private void OnAnimatorIK(int layerIndex)
     {
-        float leftFootWeight = animator.GetFloat("IKLeftFootWeight");
-        float rightFootWeight = animator.GetFloat("IKRightFootWeight");
+        leftFootWeight = animator.GetFloat("IKLeftFootWeight");
+        rightFootWeight = animator.GetFloat("IKRightFootWeight");
 
-        float leftFootCalc = animator.GetFloat("IKLeftFootCalc");
-        float rightFootCalc = animator.GetFloat("IKRightFootCalc");
+        leftFootCalc = animator.GetFloat("IKLeftFootCalc");
+        rightFootCalc = animator.GetFloat("IKRightFootCalc");
 
         animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, leftFootWeight);
         animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, leftFootWeight);
 
-
         ResetFigureHeight();
 
-        if ( leftFootCalc == 1.0f )
+        if ( leftFootCalc > .1f )
         {
             UpdateLeftFootPosition();
         }
@@ -74,8 +83,7 @@ public class FootIKControl : MonoBehaviour
         animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, rightFootWeight);
         animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, rightFootWeight);
 
-
-        if ( rightFootCalc == 1.0f )
+        if ( rightFootCalc > .1f )
         {
             UpdateRightFootPosition();
         }
@@ -95,7 +103,7 @@ public class FootIKControl : MonoBehaviour
 
         UpdateFigureHeight();
     }
-    
+
 
     private void OnDrawGizmos()
     {
@@ -107,30 +115,40 @@ public class FootIKControl : MonoBehaviour
     private void UpdateLeftFootPosition()
     {
         RaycastHit hit;
-        Ray toGround = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + legLength * Vector3.up + new Vector3(0,1f,0), Vector3.down);
-        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength + 1f, enviroLayer))
+        Ray toGround = new Ray(leftFootBone.transform.position + legLength * Vector3.up + new Vector3(0,10f,0), Vector3.down); //animator.GetIKPosition(AvatarIKGoal.LeftFoot)
+        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength + 10f, enviroLayer))
         {
             Vector3 footPosition = hit.point;
             leftLegLength = transform.parent.transform.position.y - footPosition.y + capsuleBottomHeight;
             footPosition.y += distanceToGround;
 
+            // Shamelessly stolen from https://answers.unity.com/questions/1591763/how-to-fix-the-rotation-of-my-ik-foot.html
+
+            Vector3 rotAxis = Vector3.Cross(Vector3.up, hit.normal);
+            float angle = Vector3.Angle(Vector3.up, hit.normal);
+            Quaternion rot = Quaternion.AngleAxis(angle * leftFootWeight, rotAxis);
+
             leftFootPosition = footPosition;
-            leftFootRotation = Quaternion.LookRotation(transform.forward, hit.normal);
+            leftFootRotation = rot;//Quaternion.LookRotation(transform.forward, hit.normal);
         }
     }
 
     private void UpdateRightFootPosition()
     {
         RaycastHit hit;
-        Ray toGround = new Ray(animator.GetIKPosition(AvatarIKGoal.RightFoot) + legLength * Vector3.up + new Vector3(0, 1f, 0), Vector3.down);
-        if (Physics.Raycast(toGround, out hit, distanceToGround + legLength + 1f, enviroLayer))
+        rightFootRay = new Ray(rightFootBone.transform.position + legLength * Vector3.up + new Vector3(0, 10f, 0), Vector3.down); //animator.GetIKPosition(AvatarIKGoal.RightFoot)
+        if (Physics.Raycast(rightFootRay, out hit, distanceToGround + legLength + 10f, enviroLayer))
         {
             Vector3 footPosition = hit.point;
             rightLegLength = transform.parent.transform.position.y - footPosition.y + capsuleBottomHeight;
             footPosition.y += distanceToGround;
 
+            Vector3 rotAxis = Vector3.Cross(Vector3.up, hit.normal);
+            float angle = Vector3.Angle(Vector3.up, hit.normal);
+            Quaternion rot = Quaternion.AngleAxis(angle * rightFootWeight, rotAxis);
+
             rightFootPosition = footPosition;
-            rightFootRotation = Quaternion.LookRotation(transform.forward, hit.normal);
+            rightFootRotation = rot;//Quaternion.LookRotation(transform.forward, hit.normal);
         }
     }
 
