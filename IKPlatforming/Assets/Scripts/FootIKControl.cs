@@ -58,10 +58,10 @@ public class FootIKControl : MonoBehaviour
             UpdateLeftFootPosition();
         }
 
-        if (leftFootWeight > .5)
+        if (leftFootWeight > .9)
         {
             playerMaterial.SetInt("Boolean_8A146678", 1);
-            playerMaterial.SetVector("Vector3_17EC27E9", leftFootPosition);
+            playerMaterial.SetVector("Vector3_17EC27E9", animator.GetIKPosition(AvatarIKGoal.LeftFoot));
         }
         else
         {
@@ -80,10 +80,10 @@ public class FootIKControl : MonoBehaviour
             UpdateRightFootPosition();
         }
 
-        if (rightFootWeight > .5)
+        if (rightFootWeight > .9)
         {
             playerMaterial.SetInt("Boolean_6D8D6C42", 1);
-            playerMaterial.SetVector("Vector3_821C0DB5", rightFootPosition);
+            playerMaterial.SetVector("Vector3_821C0DB5", animator.GetIKPosition(AvatarIKGoal.RightFoot));
         }
         else
         {

@@ -13,6 +13,7 @@ public class PointIK : MonoBehaviour
     LayerMask player;
 
     public bool ikActive = false;
+    public Transform mesh;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,9 +31,10 @@ public class PointIK : MonoBehaviour
     {
         animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1f);
         Vector2 mousePosition = Input.mousePosition;
+        Debug.Log("mouse: " + mousePosition);
         Quaternion pointRotation = transform.parent.rotation;
-        Vector3 pointPosition = animator.GetIKPosition(AvatarIKGoal.RightHand) + (transform.parent.forward * armLength) + Camera.main.ScreenToWorldPoint(mousePosition * 200) + (-Camera.main.transform.position + transform.position);
-        Debug.Log(pointPosition);
+        Vector3 pointPosition = animator.GetIKPosition(AvatarIKGoal.RightHand) + (mesh.forward * armLength) + (new Vector3(mousePosition.x * Mathf.Sin(transform.parent.rotation.y), mousePosition.y - Screen.height/2, mousePosition.x * Mathf.Cos(transform.parent.rotation.y)) * (1f/Screen.width));
+        Debug.Log("pointing at: " + pointPosition);
 
         
         //footPosition.y += distanceToGround;
