@@ -109,7 +109,7 @@ public class FootIKControl : MonoBehaviour
             Quaternion rot = Quaternion.AngleAxis(angle * leftFootWeight, rotAxis);
 
             leftFootPosition = footPosition;
-            leftFootRotation = rot;//Quaternion.LookRotation(transform.forward, hit.normal);
+            leftFootRotation = rot * animator.GetIKRotation(AvatarIKGoal.LeftFoot);//Quaternion.LookRotation(transform.forward, hit.normal);
         }
     }
 
@@ -128,7 +128,7 @@ public class FootIKControl : MonoBehaviour
             Quaternion rot = Quaternion.AngleAxis(angle * rightFootWeight, rotAxis);
 
             rightFootPosition = footPosition;
-            rightFootRotation = rot;//Quaternion.LookRotation(transform.forward, hit.normal);
+            rightFootRotation = rot * animator.GetIKRotation(AvatarIKGoal.RightFoot);//Quaternion.LookRotation(transform.forward, hit.normal);
         }
     }
 
