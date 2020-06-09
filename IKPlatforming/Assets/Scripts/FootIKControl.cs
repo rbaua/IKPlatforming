@@ -37,7 +37,7 @@ public class FootIKControl : MonoBehaviour
     private float leftFootCalc;
     private float rightFootCalc;
 
-
+    public Material playerMaterial;
 
     void Start()
     {
@@ -67,6 +67,16 @@ public class FootIKControl : MonoBehaviour
             UpdateLeftFootPosition();
         }
 
+        if (leftFootWeight > .9)
+        {
+            playerMaterial.SetInt("Boolean_8A146678", 1);
+            playerMaterial.SetVector("Vector3_17EC27E9", animator.GetIKPosition(AvatarIKGoal.LeftFoot));
+        }
+        else
+        {
+            playerMaterial.SetInt("Boolean_8A146678", 0);
+        }
+
         animator.SetIKPosition(AvatarIKGoal.LeftFoot, leftFootPosition);
         animator.SetIKRotation(AvatarIKGoal.LeftFoot, leftFootRotation);
 
@@ -78,16 +88,26 @@ public class FootIKControl : MonoBehaviour
             UpdateRightFootPosition();
         }
 
+        if (rightFootWeight > .9)
+        {
+            playerMaterial.SetInt("Boolean_6D8D6C42", 1);
+            playerMaterial.SetVector("Vector3_821C0DB5", animator.GetIKPosition(AvatarIKGoal.RightFoot));
+        }
+        else
+        {
+            playerMaterial.SetInt("Boolean_6D8D6C42", 0);
+        }
+
         animator.SetIKPosition(AvatarIKGoal.RightFoot, rightFootPosition);
         animator.SetIKRotation(AvatarIKGoal.RightFoot, rightFootRotation);
 
         UpdateFigureHeight();
     }
-    
+
 
     private void OnDrawGizmos()
     {
-        //Ray gizmoRay = rightFootRay;
+        //Ray gizmoRay = new Ray(animator.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down);
         Gizmos.color = Color.red;
         //Gizmos.DrawRay(gizmoRay);
     }
@@ -140,6 +160,7 @@ public class FootIKControl : MonoBehaviour
     private void UpdateFigureHeight()
     {
         float unbentLegLength = Mathf.Max(leftLegLength, rightLegLength);
+        Debug.Log(unbentLegLength);
         float torsoDisplacement = legLength - unbentLegLength - .1f;
 
         transform.position = transform.parent.transform.position + new Vector3(0, torsoDisplacement, 0);
