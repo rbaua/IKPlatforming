@@ -37,7 +37,7 @@ public class FootIKControl : MonoBehaviour
     private float leftFootCalc;
     private float rightFootCalc;
 
-
+    public Material playerMaterial;
 
     void Start()
     {
